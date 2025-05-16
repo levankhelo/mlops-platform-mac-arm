@@ -58,3 +58,10 @@ minikube start --driver=docker --cpus="${KUBE_CPU}" --gpus="all"
 > in this example, we are using 12 cpu cores using `--cpus` and 20GB memory using `--memory` commands
 > We can use `-g` or `--gpu` option to allow pods to use GPUs
 
+Add required helm repositories
+```bash
+helm repo add apache-airflow https://airflow.apache.org;
+helm repo add jupyterhub https://hub.jupyter.org/helm-chart/
+helm repo update;
+```
+> in our example, i pulled values files and distributed them in charts directory
