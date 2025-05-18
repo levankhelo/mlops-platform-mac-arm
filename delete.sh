@@ -32,6 +32,14 @@ delete_mongodb() {
   delete mongodb --namespace mongodb
 }
 
+delete_ollama() {
+  delete ollama --namespace ollama
+}
+
+delete_openwebui() {
+  delete openwebui --namespace openwebui
+}
+
 if [ $# -eq 0 ]; then
   echo "No arguments provided. Deleting all services..."
   delete_all
@@ -57,6 +65,18 @@ else
       mongodb|mon*)
         echo "Deleting MongoDB..."
         delete_mongodb;
+        ;;
+      ollama|oll*)
+        echo "Deleting Ollama..."
+        delete_ollama;
+        ;;
+      openwebui|open*)
+        echo "Deleting OpenWebUI..."
+        delete_openwebui;
+        ;;
+      netbox|net*)
+        echo "Deleting NetBox..."
+        delete netbox --namespace default
         ;;
       all)
         echo "Deleting all services..."
