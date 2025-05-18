@@ -76,7 +76,7 @@ else
         ;;
       netbox|net*)
         echo "Deleting NetBox..."
-        delete netbox --namespace default
+        kubectl delete pod netbox --namespace default
         ;;
       all)
         echo "Deleting all services..."
