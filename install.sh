@@ -9,6 +9,9 @@ run_all() {
   run_airflow;
   run_mlflow;
   run_postgresql;
+  run_mongodb;
+  run_ollama;
+  run_openwebui;
 }
 
 run_airflow() {
@@ -29,6 +32,14 @@ run_postgresql() {
 
 run_mongodb() {
   run mongodb oci://registry-1.docker.io/bitnamicharts/mongodb --namespace mongodb --create-namespace --values charts/mongodb/values.yaml
+}
+
+run_ollama() {
+  run ollama ollama-helm/ollama --namespace ollama --create-namespace --values charts/ollama/values.yaml
+}
+
+run_openwebui() {
+  run openwebui open-webui/open-webui --namespace openwebui --create-namespace --values charts/openwebui/values.yaml
 }
 
 run_netbox() {
@@ -77,6 +88,14 @@ else
       mongodb|mon*)
         echo "Running MongoDB..."
         run_mongodb;
+        ;;
+      ollama|oll*)
+        echo "Running Ollama..."
+        run_ollama;
+        ;;
+      openwebui|open*)
+        echo "Running OpenWebUI..."
+        run_openwebui;
         ;;
       all)
         echo "Running all services..."
